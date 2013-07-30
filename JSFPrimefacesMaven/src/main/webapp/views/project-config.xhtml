@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<h:head>
+		<title>Configuración inicial del proyecto</title>
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css" />
+		<h:outputStylesheet library="bootstrap" name="css/custom.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" />
+		<h:outputScript library="bootstrap" name="js/bootstrap.js"/>
+	</h:head>
+	
+	<h:body>
+				
+		<script>
+			$(document).ready(function() {
+				$('.bs-docs-sidenav').scrollspy();
+			});
+		</script>
+		
+		<div class="container">
+			<div class="row">
+				<div class="hero-unit text-center">
+					<h1>Configuración del Proyecto</h1>
+				</div>
+
+				<ul class="breadcrumb">
+					<li><a href="portada">Portada</a><span class="divider">/</span></li>
+					<li class="active">Configuración del Proyecto</li>
+				</ul>
+		</div>
+			<div class="row">
+				<div class="span3 bs-docs-sidebar">
+					<ul class="nav nav-list bs-docs-sidenav affix-top" data-spy="affix" data-offset-top="220">
+						<li class="active">
+							<a href="#componentes"><i class="icon-chevron-right"></i>
+								Componentes
+							</a>
+						</li>
+						<li>
+							<a href="#creacion"><i class="icon-chevron-right"></i>
+								Creación del proyecto
+							</a>
+						</li>
+						<li>
+							<a href="#facets"><i class="icon-chevron-right"></i>
+								Configurar <em>Project Facets</em>
+							</a>
+						</li>
+						<li>
+							<a href="#pom"><i class="icon-chevron-right"></i>
+								Editar el POM
+							</a>
+						</li>
+						<li>
+							<a href="#carpetas"><i class="icon-chevron-right"></i>
+								Estructura de carpetas
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="span9">
+					<section id="componentes">
+						<h3>1. Componentes</h3>
+						<ul>
+							<li>JSF 2.1</li>
+							<li>Primefaces 3.5</li>
+							<li>Primefaces Ext 0.7.1</li>
+							<li>Twitter Bootstrap</li>
+							<li>PrettyFaces</li>
+							<li>Maven</li>
+						</ul>
+					</section>
+					<section id="creacion">
+						<h3>2. Creación del proyecto</h3>
+						<p>
+							Creamos un nuevo proyecto maven en Eclipse haciendo <code>File &gt; New &gt; Maven Project</code>
+							y lo creamos usando el arquetipo de Maven para aplicaciones web (<a
+							href="http://www.mkyong.com/maven/how-to-create-a-web-application-project-with-maven/"
+							target="_blank">Link</a>)
+						</p>
+					</section>
+					<section id="facets">
+						<h3>3. Configurar <em>Project Facets</em> y <em>Build Path</em></h3>
+						<p>
+							Añadimos soporte para JSF en <code>Properties &gt; Project Facets</code> activando:				
+						</p>
+						<ul>
+							<li><strong>Dynamic Web Module</strong> - 3.0</li>
+							<li><strong>Java</strong> - 1.7 ó superior</li>
+							<li><strong>JavaServer Faces</strong> - 2.1 (Hay que añadir la librería)</li>
+						</ul>
+						<p>
+							Para que el autocompletado de JSF funcione, hay que añadir en <code></code>
+						</p>
+						<p>
+							Añadimos la librería del Runtime de JBoss al proyecto: <code>Properties &gt; Build Path &gt; Add Library &gt; Server Runtime</code>
+						</p>
+					</section>
+					<section id="pom">
+						<h3>4. Editar el POM</h3>
+						<p>
+							Esta es la configuración del POM:				
+						</p>
+						<pre>
+							&lt;repositories&gt;
+								&lt;repository&gt;
+									&lt;id&gt;prime-repo&lt;/id&gt;
+									&lt;name&gt;PrimeFaces Maven Repository&lt;/name&gt;
+									&lt;url&gt;http://repository.primefaces.org&lt;/url&gt;
+									&lt;layout&gt;default&lt;/layout&gt;
+								&lt;/repository&gt;
+							&lt;/repositories&gt;
+							
+							&lt;dependencies&gt;
+								&lt;dependency&gt;
+									&lt;groupId&gt;junit&lt;/groupId&gt;
+									&lt;artifactId&gt;junit&lt;/artifactId&gt;
+									&lt;version&gt;3.8.1&lt;/version&gt;
+									&lt;scope&gt;test&lt;/scope&gt;
+								&lt;/dependency&gt;
+								&lt;dependency&gt;
+									&lt;groupId&gt;org.primefaces&lt;/groupId&gt;
+									&lt;artifactId&gt;primefaces&lt;/artifactId&gt;
+									&lt;version&gt;3.5&lt;/version&gt;
+								&lt;/dependency&gt;
+								&lt;dependency&gt;
+									&lt;groupId&gt;org.primefaces.extensions&lt;/groupId&gt;
+									&lt;artifactId&gt;primefaces-extensions&lt;/artifactId&gt;
+									&lt;version&gt;0.7.1&lt;/version&gt;
+								&lt;/dependency&gt;
+								&lt;dependency&gt;
+									&lt;groupId&gt;org.ocpsoft.rewrite&lt;/groupId&gt;
+									&lt;artifactId&gt;rewrite-servlet&lt;/artifactId&gt;
+									&lt;version&gt;2.0.4.Final&lt;/version&gt;
+								&lt;/dependency&gt;
+								&lt;dependency&gt;
+									&lt;groupId&gt;org.ocpsoft.rewrite&lt;/groupId&gt;
+									&lt;artifactId&gt;rewrite-config-prettyfaces&lt;/artifactId&gt;
+									&lt;version&gt;2.0.4.Final&lt;/version&gt;
+								&lt;/dependency&gt;
+							&lt;/dependencies&gt;
+						</pre>
+					</section>
+					<section id="carpetas">
+						<h3>5. Estructura de carpetas</h3>
+				<pre>
+					src
+					|- main
+						|- java
+						|- resources
+						|- webapp
+							|---- index.xhtml
+							|
+							|---- resources
+							|		|- bootstrap
+							|		|	- 1_0
+							|		|	|---- css
+							|		|	|---- img
+							|		|	|---- js
+							|		|- images
+							|
+							|---- views
+							|		- project-config.xhtml
+							|
+							|---- WEB-INF
+									|- faces-config.xml
+									|- pretty-config.xml
+									|- web.xml
+									
+				</pre>
+					</section>
+				</div>
+			</div>
+		</div>
+	</h:body>
+</html>

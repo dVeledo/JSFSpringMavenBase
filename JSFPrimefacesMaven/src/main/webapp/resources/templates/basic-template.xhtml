@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:components="http://java.sun.com/jsf/composite/components" >
+
+	<h:head>
+		<title><ui:insert name="titulo"/></title>
+		
+		<!-- CSS básico -->
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css" />
+		<h:outputStylesheet library="bootstrap" name="css/custom.css" />
+				
+		<!-- JS básico -->
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" /> -->
+		<h:outputScript library="bootstrap" name="js/bootstrap.js"/>
+		<h:outputScript library="bootstrap" name="js/custom.js"/>
+		
+		<!-- Custom CSS -->
+		<ui:insert name="custom-css" />
+		
+		<!-- Custom JS -->
+		<ui:insert name="custom-js" />
+	</h:head>
+	
+	<h:body>
+		<div class="container">
+			<ui:insert name="main-content" />
+		</div>
+	</h:body>
+</html>

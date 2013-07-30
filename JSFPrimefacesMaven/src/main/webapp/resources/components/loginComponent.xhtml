@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions" 
+	xmlns:composite="http://java.sun.com/jsf/composite">
+ 
+	<composite:interface/>
+
+	<composite:implementation>
+		<!-- Modal -->
+		<h:form id="loginComponentFrmID">
+			<div id="loginComponent" class="modal hide fade" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h3 id="myModalLabel">Login</h3>
+				</div>
+				<h:panelGroup styleClass="modal-body" layout="block" id="aaa">
+				
+					<h:panelGroup layout="block" rendered="#{!userBean.activeSession}" >					
+						<p:messages />
+						<div class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label" for="inputEmail">Usuario</label>
+								<div class="controls">
+									<!-- <input type="text" id="inputEmail" placeholder="Email" /> -->
+									<p:inputText value="#{userBean.userName}" id="loginUserNameID" 
+										required="true" requiredMessage="Debe indicar su nombre de usuario." />
+									<pe:keyFilter mask="email" for="loginUserNameID" />
+									<p:watermark value="Correo electrónico" for ="loginUserNameID" />
+									
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputPassword">Contraseña</label>
+								<div class="controls">
+									<!-- <input type="password" id="inputPassword" placeholder="Password" /> -->
+									<p:password value="#{userBean.password}" id="loginPasswordID" 
+										required="true" requiredMessage="Debe indicar su contraseña." />
+									<p:watermark value="Contraseña" for ="loginPasswordID" />
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<label class="checkbox"> <input type="checkbox" />Recuérdame</label>
+									<!-- <button type="submit" class="btn">¡Acceder!</button> -->
+									<p:commandLink actionListener="#{userBean.login()}" update=":loginCompID:loginComponentFrmID:aaa" 
+										styleClass="btn btn-info" value="¡Acceder!"/>
+								</div>
+							</div>
+						</div>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" rendered="#{userBean.activeSession}" >
+						<div class="alert alert-info">
+							<h3>¡Bienvenido! Has accedido correctamente a tu cuenta.</h3>
+						</div>
+					</h:panelGroup>
+					
+				</h:panelGroup>			
+				
+			</div>
+		</h:form>
+	</composite:implementation>
+</html>

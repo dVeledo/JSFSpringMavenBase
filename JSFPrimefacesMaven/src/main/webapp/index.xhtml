@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:components="http://java.sun.com/jsf/composite/components" >
+
+<h:head>
+	<title>Página Principal del proyecto</title>
+	<h:outputStylesheet library="bootstrap" name="css/bootstrap.css" />
+	<h:outputStylesheet library="bootstrap" name="css/custom.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" />
+	<h:outputScript library="bootstrap" name="js/bootstrap.js"/>
+	<h:outputScript library="bootstrap" name="js/custom.js"/>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success">
+					<strong>¡Bienvenido! </strong>
+					<h:outputText value="Administrador" rendered="#{userBean.activeSession}" />
+					<h:outputText value="Invitado" rendered="#{!userBean.activeSession}" />					
+					<h:panelGroup styleClass="text-right" rendered="#{!userBean.activeSession}" >
+						<a href="#" onclick="popupLogin();" class="login-modal">¡Accede a tu cuenta!</a>
+					</h:panelGroup>					
+				</div>
+			</div>
+		</div>
+		<components:loginComponent id="loginCompID"/>
+		<div class="row">
+			<div class="span12">	
+				<div class="hero-unit text-center">
+					<h1>JSF2.1 + Spring 3.1.2</h1>
+					<h2>Primefaces 3.5 + Primefaces Ext 0.7 + Twitter Bootstrap</h2>
+					<h3>Maven + GitHub</h3><br />
+					
+					<a href="#myModal" role="button" data-toggle="modal" class="btn btn-success">
+						Acerca del autor
+					</a>
+				</div>
+		
+				<!-- Modal -->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+						<h3 id="myModalLabel">Sobre el Autor</h3>
+					</div>
+					<div class="modal-body">
+						<h4>Darío Veledo</h4>
+						<p>Ingeniero en Informática por la Universidad de Sevilla</p>
+						<p>Experto en desarrollo e implantación de soluciones basadas en Java y 
+						J2EE: JSF, Librerías de componentes (Primefaces, Icefaces), Maven,
+						Spring, WebServices...</p>
+						<p>Actualmente desarrollando aplicaciones basadas en Portlets en 
+						Liferay junto con JSF y otras tecnologías</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">		
+			<div class="span4">
+				<div class="pre">
+					<p class="text-center">
+						<a href="configuracion-inicial">Configuración del proyecto</a><i class="icon-wrench"></i><br />
+						<a href="buenas-practicas">Buenas prácticas</a><i class="icon-star"></i><br />
+					</p>
+				</div>
+			</div>
+			<div class="span8">
+				<blockquote class="pull-right">
+				  <p>Las cosas simples son las más extraordinaras</p>
+				  <small>Paolo Coelho</small>
+				</blockquote>
+			</div>
+		</div>
+
+		<div class="row">
+			
+			<ul class="thumbnails">
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="jsf-logo.png"/>
+						<div class="caption">
+							<h2 class="text-center">JSF 2.1</h2>
+							<p>JavaServer Faces (JSF) es una tecnología y framework para
+							aplicaciones Java basadas en web que simplifica el desarrollo de
+							interfaces de usuario en aplicaciones Java EE. JSF usa JavaServer
+							Pages (JSP) como la tecnología que permite hacer el despliegue de
+							las páginas, pero también se puede acomodar a otras tecnologías
+							como XUL (acrónimo de XML-based User-interface Language, lenguaje
+							basado en XML para la interfaz de usuario).</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="spring-logo.gif" />
+						<div class="caption">
+							<h2 class="text-center">Spring 3.1.2</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Hic doloribus fuga magnam numquam ducimus consequuntur similique
+								porro eligendi vel ex quaerat incidunt pariatur voluptates quis
+								possimus dolore libero officia molestias!</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="primefaces-logo.png" />
+						<div class="caption">
+							<h2 class="text-center">Primefaces 3.5</h2>
+							<p>PrimeFaces es una librería de componentes visuales open
+								source desarrollada y mantenida por Prime Technology, una compañía
+								Turca de IT especializada en consultoría ágil, JSF, Java EE y
+								Outsourcing. El proyecto es liderado por Çağatay Çivici</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>				
+			</ul>
+		</div>
+		<div class="row">
+			
+			<ul class="thumbnails">
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="primefaces-ext-logo.png" />
+						<div class="caption">
+							<h3 class="text-center">Primefaces Ext 0.7.1</h3>
+							<p>Primefaces Ext (Extensiones) es una biblioteca de componentes
+							complementaria a Primefaces (aunque se pueden usar de manera
+							independiente) que proporciona una serie de componentes adicionales
+							con algunas funciones útiles como <em>inputs</em> con limitación
+							de carácteres (sólo números, sólo letras), etc...</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="bootstrap.png" />
+						<div class="caption">
+							<h3 class="text-center">TW Bootstrap</h3>
+							<p>Twitter Bootstrap es el popular <em>Framework</em> de Twitter 
+							para el desarrollo rápido de interfaces visuales en HTML junto 
+							con CSS y JavaScript.</p>
+							<p>Como todo framework proporciona una serie de elementos para
+							facilitar los trabajos repetitivos que se llevan a cabo al crear
+							una nueva web. En este caso se apoya en el uso intensivo de 
+							clases CSS.</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>
+				<li class="span4">
+					<div class="thumbnail">
+						<h:graphicImage library="images" name="maven-logo.png" />
+						<div class="caption">
+							<h3 class="text-center">Maven</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Consequuntur consectetur at voluptatum quibusdam nemo ullam
+								eveniet earum rerum quod saepe hic doloribus mollitia ratione
+								laudantium possimus. Molestiae voluptatibus itaque ratione.</p>
+							<a href="#" class="btn btn-info btn-small">Ver más</a>
+						</div>
+					</div>
+				</li>
+			</ul>	
+			
+		</div>
+	</div>
+
+</h:body>
+</html>

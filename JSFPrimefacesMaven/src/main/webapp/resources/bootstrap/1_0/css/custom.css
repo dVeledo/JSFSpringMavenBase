@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+.container {
+	margin-top: 20px;
+}
+
+.affix {
+	top: 50px;
+}
